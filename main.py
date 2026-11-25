@@ -33,7 +33,9 @@ def main() -> int:
     for word in banned:
         assert word not in lowered, f"announces tiredness with {word!r}"
 
-    out_dir = os.environ.get("OUTPUT_DIR", "/output")
+    out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR") or os.environ.get(
+        "OUTPUT_DIR", "/output"
+    )
     os.makedirs(out_dir, exist_ok=True)
     out_path = os.path.join(out_dir, "entry.txt")
     with open(out_path, "w", encoding="utf-8") as f:
